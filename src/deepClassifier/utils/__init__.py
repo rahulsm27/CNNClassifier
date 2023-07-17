@@ -1,1 +1,1 @@
-from deepClassifier.utils import *
+from deepClassifier.utils.common import *

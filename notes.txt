@@ -29,3 +29,6 @@ Branch is master
 2. Setup of setup.cfg, setup.py, tox.ini, pyproject.toml, init_setup.sh
 3. In terminal use git bash..as init_setup.sh works with it bash init_setup.sh
 4. 
+
+
+python src/deepClassifier/pipeline/stage_01_data_ingestion.py
