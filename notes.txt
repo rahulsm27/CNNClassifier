@@ -1,0 +1,31 @@
+setup.cfg. A setup.cfg file is a configuration file that contains static information about your package that does not change often, such as the name and author of the package. This information is used by setup tools, which is the default tool for packaging and distributing Python code. Technically you can build a python package without a setup.cfg file and include all of the relevant information in a setup.py file, but it is best practice to include a setup.cfg file for static information. 
+setup.py. A setup.py file is similar to a setup.cfg file, however rather than being a static configuration file, it is a Python file that allows you to dynamically import information and modify it. The setup.py file is also used by setuptools and can be used to pass the same information as the setup.cfg file. Technically, a directory does not need to include a setup.py file in order to be considered a Python package. However, a setup.py file is required if you want to import an editable version of your package using pip – which we do! 
+README. A readme file is a file that contains human-readable documentation about the Python package. If you are following along with our case study, you should already be familiar with the concept of a README file because we created one when we initialized our GitHub repository in a previous step. 
+LICENSE. A LICENSE is a file that tells other developers how they are allowed to use your code. It generally provides information such as whether the code is allowed to be modified or what use cases it is allowed to be used for. If you are following along with our case study, you should be familiar with the concept of a LICENSE because we already initialized our GitHub repository with one in a previous step. 
+pyproject.toml. A pyproject.toml file is used to specify the resources that are needed in order to build the package. For example, if you need to specify a specific version of setuptools that should be used to build your Python package, then you can specify that in your pyproject.toml file. If you want to read more about pyproject.toml files then we recommend checking out this resource. 
+
+## pip install -e .
+Now you have created all the files necessary to build your Python package. We will use pip to install an editable version of the package so that the changes you make to the packages will be recorded in real time. This means that you do not have to rebuild the package every time that you make updates to the package as you are developing it.  
+
+Navigate to the main package directory that contains your setup.py and setup.cfg files in your terminal and run the following command. The -e option that is used tells pip that you want to install an editable version of the package. 
+
+
+## What is a pyproject.toml file used for? 
+## Python comes along with an internal set of tools that are used to build and 
+## distribute Python packages. This includes some modules you may have seen before such ## as setuptools and wheel. The pyproject.toml file gives you a way to specify which ##versions of the tools that are used to build your Python package. For example, if  ## ## your package needs to be built using a specific version of setup tools, then you can ##specify that in your pyproject.toml file.
+
+
+tox makes it easy to:
+
+Test against different versions of Python (which would have alerted Kyle that the library hadn’t been tested against his install version).
+Test against different dependency versions
+Capture and run setup steps/ad hoc commands (which Kyle could have made a mistake on / not known about)
+Isolate environment variables - By design, tox does not pass any evars from the system. Instead you are asked to explicitly declare them (which would have alerted Kyle to any environment variable requirements).
+Do all the above across Windows / macOS / Linux (which would have saved Kyle if the issue had been due to the OS)
+
+# Important
+Branch is master 
+1. Create project structure with template
+2. Setup of setup.cfg, setup.py, tox.ini, pyproject.toml, init_setup.sh
+3. In terminal use git bash..as init_setup.sh works with it bash init_setup.sh
+4. 
