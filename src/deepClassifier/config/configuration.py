@@ -93,6 +93,8 @@ class ConfigurationManager:
         eval_config = EvaluationConfig(
             path_of_model=self.config.training.trained_model_path,
             training_data=self.config.data_ingestion.unzip_dir,
+            mlflow_uri="https://dagshub.com/rahulsm27/CNNClassifierProject.mlflow",
+            all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,
             params_batch_size=self.params.BATCH_SIZE
         )

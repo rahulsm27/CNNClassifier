@@ -11,6 +11,8 @@ from pathlib import Path
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
         self.config = config
+        self.count_cat = 0
+        self.count_dog = 0
 
     def download_file(self):
         logger.info("Trying to download file...")
@@ -34,14 +36,33 @@ class DataIngestion:
 
     def _preprocess(self, zf: ZipFile, f: str, working_dir: str):
         target_filepath = os.path.join(working_dir, f)
-        if not os.path.exists(target_filepath):
-            zf.extract(f, working_dir)
 
-        if os.path.getsize(target_filepath) == 0:
-            logger.info(
-                f"removing file:{target_filepath} of size: {get_size(Path(target_filepath))}"
-            )
-            os.remove(target_filepath)
+        
+        
+        if 'Cat' in f:
+            self.count_cat = self.count_cat + 1
+            if self.count_cat < 1000:
+
+                if not os.path.exists(target_filepath):
+                    zf.extract(f, working_dir)
+
+                if os.path.getsize(target_filepath) == 0:
+                    logger.info(
+                        f"removing file:{target_filepath} of size: {get_size(Path(target_filepath))}"
+             )
+                    os.remove(target_filepath)
+        if 'Dog' in f:
+            self.count_dog = self.count_dog + 1
+            if self.count_dog < 1000:
+
+                if not os.path.exists(target_filepath):
+                    zf.extract(f, working_dir)
+
+                if os.path.getsize(target_filepath) == 0:
+                    logger.info(
+                        f"removing file:{target_filepath} of size: {get_size(Path(target_filepath))}"
+             )
+                    os.remove(target_filepath)        
 
     def unzip_and_clean(self):
         logger.info(f"unzipping file and removing unawanted files")
